@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+:root {
+    --dark-ocean-color: #4A7CA3;
+    --ocean-dark: #3A6385;
+    --ocean-light: #5B8FB5;
+}
+
+form.register-form {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--dark-ocean-color);
+    color: #FFFFFF;
+    padding: 32px 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    max-width: 500px;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+form.register-form:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+    transform: translateY(-3px);
+}
+
+.register-title {
+    letter-spacing: -0.5px;
+}
+
+form.register-form .form-label {
+    opacity: 0.9;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+form.register-form .form-control {
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 8px 12px;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+form.register-form .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+}
+
+form.register-form .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+form.register-form .form-text {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+form.register-form .invalid-feedback,
+form.register-form .text-danger {
+    color: #FFD6D6 !important;
+    font-size: 14px;
+}
+
+.register-btn {
+    letter-spacing: 0.3px;
+}

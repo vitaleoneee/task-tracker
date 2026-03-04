@@ -33,7 +33,12 @@ INSTALLED_APPS = [
     # Third-party apps
     "allauth",
     "allauth.account",
+    "crispy_forms",
+    "crispy_bootstrap5",
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -98,6 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Allauth configuration
 AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
@@ -105,6 +111,8 @@ AUTHENTICATION_BACKENDS = [
 ACCOUNT_EMAIL_VERIFICATION = "none"  # disables email confirmation
 ACCOUNT_SIGNUP_FIELDS = ["username*", "password1*", "password2*"]  # registration fields
 ACCOUNT_LOGIN_METHODS = ["username"]  # login by username or email
+
+LOGIN_REDIRECT_URL = "/"  # redirect to main page after login/registration
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
