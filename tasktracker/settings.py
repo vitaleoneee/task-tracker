@@ -103,9 +103,8 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 ACCOUNT_EMAIL_VERIFICATION = "none"  # disables email confirmation
-ACCOUNT_EMAIL_REQUIRED = False  # email is not required
-ACCOUNT_AUTHENTICATION_METHOD = "username"  # login by username
-ACCOUNT_USERNAME_REQUIRED = True  # login by username is required
+ACCOUNT_SIGNUP_FIELDS = ["username*", "password1*", "password2*"]  # registration fields
+ACCOUNT_LOGIN_METHODS = ["username"]  # login by username or email
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
