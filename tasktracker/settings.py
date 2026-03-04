@@ -113,6 +113,8 @@ ACCOUNT_SIGNUP_FIELDS = ["username*", "password1*", "password2*"]  # registratio
 ACCOUNT_LOGIN_METHODS = ["username"]  # login by username or email
 
 LOGIN_REDIRECT_URL = "/"  # redirect to main page after login/registration
+ACCOUNT_LOGOUT_ON_GET = True  # log out immediately on GET request to log out URL
+ACCOUNT_LOGOUT_REDIRECT_URL = "/"  # redirect to main page after logout
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
