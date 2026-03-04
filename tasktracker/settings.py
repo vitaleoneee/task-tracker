@@ -30,6 +30,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Local apps
     "tasktracker.apps.users",
+    # Third-party apps
+    "allauth",
+    "allauth.account",
 ]
 
 MIDDLEWARE = [
@@ -40,6 +43,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # Allauth middleware
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "tasktracker.urls"
@@ -92,6 +97,15 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
+ACCOUNT_EMAIL_VERIFICATION = "none"  # disables email confirmation
+ACCOUNT_EMAIL_REQUIRED = False  # email is not required
+ACCOUNT_AUTHENTICATION_METHOD = "username"  # login by username
+ACCOUNT_USERNAME_REQUIRED = True  # login by username is required
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
