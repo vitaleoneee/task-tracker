@@ -1,0 +1,13 @@
+{% load crispy_forms_tags %}
+
+<form class="custom-form" hx-post="{% url 'tracker:add_project' %}">
+    {% csrf_token %}
+    <legend class="mb-3 text-center fs-1 fw-bold custom-form-title">
+        New Todo List
+    </legend>
+    {{ form|crispy }}
+    <div class="d-flex gap-2 mt-3">
+        <button type="submit" class="custom-form-btn flex-grow-1">Create</button>
+        <button type="button" class="custom-form-btn" @click="open = false">Cancel</button>
+    </div>
+</form>

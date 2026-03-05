@@ -128,6 +128,23 @@ form.custom-form .form-check-label {
     color: #FFFFFF;
 }
 
+.custom-form-btn {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 5px 14px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.custom-form-btn:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+
 .add-todo-btn {
     color: #FFFFFF;
     padding: 10px 16px;
@@ -153,4 +170,20 @@ form.custom-form .form-check-label {
 
 .add-todo-btn i {
     margin-right: 10px;
+}
+
+.todo-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+}
+
+.todo-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1002;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
