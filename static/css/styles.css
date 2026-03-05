@@ -6,8 +6,11 @@
     --ocean-light: #5B8FB5;
 }
 
+* {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
 form.custom-form {
-    font-family: 'Plus Jakarta Sans', sans-serif;
     background-color: var(--dark-ocean-color);
     color: #FFFFFF;
     padding: 32px 40px;
@@ -88,4 +91,39 @@ form.custom-form .form-check-label {
     color: rgba(255, 255, 255, 0.9);
     font-size: 14px;
     cursor: pointer;
+}
+
+.custom-navbar {
+    background-color: var(--dark-ocean-color);
+    padding: 12px 0;
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.25);
+}
+
+.custom-navbar-logo {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.custom-navbar-logo:hover {
+    opacity: 0.8;
+}
+
+.custom-navbar-username {
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 16px;
+    border-right: rgba(255, 255, 255, 0.5) solid 2px;
+    padding-right: 16px;
+}
+
+.custom-navbar-link {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.custom-navbar-link:hover {
+    color: #FFFFFF;
 }

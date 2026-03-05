@@ -5,5 +5,22 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>hello world!</h1>
+    <nav class="custom-navbar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="custom-navbar-logo" href="{% url 'tracker:dashboard' %}">Task Tracker</a>
+
+            {% if request.user.is_authenticated %}
+                <div class="d-flex align-items-center gap-3">
+                    <span class="custom-navbar-username">{{ request.user.username }}</span>
+                    <a href="{% url 'account_logout' %}" class="custom-navbar-link">Logout</a>
+                </div>
+            {% else %}
+                <div class="d-flex align-items-center gap-2">
+                    <a href="{% url 'account_login' %}" class="custom-navbar-link">Login</a>
+                    <span class="text-light fw-bold">or</span>
+                    <a href="{% url 'account_signup' %}" class="custom-navbar-link">Register</a>
+                </div>
+            {% endif %}
+        </div>
+    </nav>
 {% endblock content %}
