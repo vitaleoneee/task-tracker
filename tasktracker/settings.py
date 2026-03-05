@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Local apps
     "tasktracker.apps.users",
+    "tasktracker.apps.tracker",
     # Third-party apps
     "allauth",
     "allauth.account",
