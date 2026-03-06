@@ -20,7 +20,10 @@
     <!-- Buttons -->
     <div class="d-flex align-items-center task-buttons px-2">
 
-        <button type="button" class="btn">
+        <button type="button" class="btn"
+                hx-get="{% url 'tracker:task_update' task.id %}"
+                hx-target="#task-{{ task.id }}"
+                hx-swap="outerHTML">
             <i class="bi bi-pencil"></i>
         </button>
 

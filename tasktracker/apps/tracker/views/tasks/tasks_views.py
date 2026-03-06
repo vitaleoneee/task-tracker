@@ -38,7 +38,7 @@ class TaskCreateView(CreateView):
 class TaskUpdateView(UpdateView):
     model = Task
     template_name = "tracker/partials/tasks/update_task.html"
-    fields = ["title", "due_date", "priority", "is_completed"]
+    fields = ["title", "due_date", "priority"]
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
