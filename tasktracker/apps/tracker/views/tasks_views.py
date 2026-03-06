@@ -85,6 +85,7 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
+    success_url = "/"  # not used but Django requires it
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
