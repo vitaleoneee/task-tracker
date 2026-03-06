@@ -1,39 +1,43 @@
 <div id="task-{{ task.id }}" class="d-flex px-3 justify-content-between align-items-stretch task-item">
-
     <!-- Custom checkbox -->
-    <div class="d-flex align-items-center justify-content-center me-2 pe-3 border-end-light-red"
+    <div class="d-flex justify-content-center me-2 pe-3 border-end-light-red align-self-stretch"
+         style="min-width: 60px; width: 60px;"
          hx-post="{% url 'tracker:task_update' task.id %}"
          hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
          hx-vals='{"toggle_complete": true}'
          hx-target='#task-{{ task.id }}'
          hx-swap="outerHTML">
-        <div class="task-check {% if task.is_completed %}bg-success border-success{% endif %}"></div>
+        <div class="d-flex flex-column justify-content-center align-items-center gap-1 py-1 task-checkbox">
+            <div class="task-check {% if task.is_completed %}bg-success border-success{% endif %}"></div>
+            {% if task.priority == 1 %}
+                <span class="badge text-bg-success">Low</span>
+            {% elif task.priority == 2 %}
+                <span class="badge text-bg-warning">Medium</span>
+            {% elif task.priority == 3 %}
+                <span class="badge text-bg-info">High</span>
+            {% else %}
+                <span class="badge text-bg-danger">Critical</span>
+            {% endif %}
+        </div>
     </div>
-
     <!-- Task title -->
     <div class="flex-grow-1 d-flex align-items-center px-3 border-start-light-red border-end">
         <span class="text-break {% if task.is_completed %}text-decoration-line-through{% endif %}">
             {{ task.title }}
         </span>
     </div>
-
     <!-- Buttons -->
     <div class="d-flex align-items-center task-buttons px-2">
-
         <button type="button" class="btn"
                 hx-get="{% url 'tracker:task_update' task.id %}"
                 hx-target="#task-{{ task.id }}"
                 hx-swap="outerHTML">
             <i class="bi bi-pencil"></i>
         </button>
-
         <div class="btn-divider text-secondary">|</div>
-
         <button type="button" class="btn" hx-delete="{% url 'tracker:task_delete' task.id %}"
                 hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
             <i class="bi bi-trash"></i>
         </button>
-
     </div>
-
 </div>
