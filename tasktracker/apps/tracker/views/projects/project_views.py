@@ -1,6 +1,7 @@
 import json
 
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.views.generic import (
     CreateView,
     ListView,
@@ -61,7 +62,8 @@ class ProjectUpdateView(UpdateView):
     def form_valid(self, form):
         form.instance.owner = self.request.user
         self.object = form.save()
-        response = HttpResponse()
-        # Return an HTMX response to trigger the project list refresh
-        response["HX-Trigger"] = "refreshData"
-        return response
+        return render(
+            self.request,
+            "tracker/partials/projects/project_item.html",
+            {"project": self.object},
+        )
