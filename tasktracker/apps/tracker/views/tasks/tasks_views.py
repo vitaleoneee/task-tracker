@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.utils import timezone
 from django.views.generic import (
     CreateView,
     ListView,
@@ -18,6 +19,11 @@ class TaskListView(ListView):
 
     def get_queryset(self):
         return Task.objects.filter(project_id=self.kwargs["pk"])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["now"] = timezone.now()
+        return context
 
 
 class TaskDetailView(DetailView):

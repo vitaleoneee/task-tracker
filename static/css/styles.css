@@ -253,3 +253,16 @@ form.custom-form .form-check-label {
     min-width: 60px;
     width: 60px;
 }
+
+.task-due {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.task-due.overdue {
+    color: #DC3545;
+}
+
+.task-due.upcoming {
+    color: #198754;
+}

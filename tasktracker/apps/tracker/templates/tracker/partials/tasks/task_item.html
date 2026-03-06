@@ -1,13 +1,12 @@
 <div id="task-{{ task.id }}" class="d-flex px-3 justify-content-between align-items-stretch task-item">
     <!-- Custom checkbox -->
-    <div class="d-flex justify-content-center me-2 pe-3 border-end-light-red align-self-stretch"
-         style="min-width: 60px; width: 60px;"
+    <div class="d-flex justify-content-center me-2 pe-3 border-end-light-red align-self-stretch task-checkbox"
          hx-post="{% url 'tracker:task_update' task.id %}"
          hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
          hx-vals='{"toggle_complete": true}'
          hx-target='#task-{{ task.id }}'
          hx-swap="outerHTML">
-        <div class="d-flex flex-column justify-content-center align-items-center gap-1 py-1 task-checkbox">
+        <div class="d-flex flex-column justify-content-center align-items-center gap-1 py-1">
             <div class="task-check {% if task.is_completed %}bg-success border-success{% endif %}"></div>
             {% if task.priority == 1 %}
                 <span class="badge text-bg-success">Low</span>
@@ -21,10 +20,21 @@
         </div>
     </div>
     <!-- Task title -->
-    <div class="flex-grow-1 d-flex align-items-center px-3 border-start-light-red border-end">
-        <span class="text-break {% if task.is_completed %}text-decoration-line-through{% endif %}">
-            {{ task.title }}
+    <div class="flex-grow-1 d-flex flex-column justify-content-center px-3 border-start-light-red border-end">
+    <span class="text-break {% if task.is_completed %}text-decoration-line-through{% endif %}">
+        {{ task.title }}
+    </span>
+        {% if task.due_date and not task.is_completed %}
+            {% if task.due_date < now %}
+                <span class="task-due overdue">
+            <i class="bi bi-clock me-1"></i>Overdue | {{ task.due_date }}
         </span>
+            {% else %}
+                <span class="task-due upcoming">
+            <i class="bi bi-check-circle me-1"></i>Due | {{ task.due_date }}
+        </span>
+            {% endif %}
+        {% endif %}
     </div>
     <!-- Buttons -->
     <div class="d-flex align-items-center task-buttons px-2">
