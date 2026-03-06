@@ -1,8 +1,30 @@
-<div hx-get="{% url 'tracker:task_list' project.id %}" hx-target="#test" hx-trigger="load">
-</div>
+{% for task in tasks %}
+    <div class="d-flex px-3 justify-content-between align-items-stretch task-item">
 
-<div id="test">
-        {% for task in tasks %}
-            <p>{{ task.title }}</p>
-        {% endfor %}
-</div>
+        <!-- Checkbox -->
+        <div class="d-flex align-items-center justify-content-center me-2 pe-3 border-end-light-red">
+            <input class="form-check-input task-check" type="checkbox">
+        </div>
+
+        <!-- Task title -->
+        <div class="flex-grow-1 d-flex align-items-center px-3 border-start-light-red border-end">
+            <span class="text-break">{{ task.title }}</span>
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-flex align-items-center task-buttons px-2">
+
+            <button type="button" class="btn">
+                <i class="bi bi-pencil"></i>
+            </button>
+
+            <div class="btn-divider text-secondary">|</div>
+
+            <button type="button" class="btn">
+                <i class="bi bi-trash"></i>
+            </button>
+
+        </div>
+
+    </div>
+{% endfor %}

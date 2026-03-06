@@ -208,3 +208,40 @@ form.custom-form .form-check-label {
     background-color: #F0F0F0;
     border: 1px solid var(--ocean-light);
 }
+
+.task-check {
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.task-check:hover {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.task-buttons button {
+    border: 0;
+    border-radius: 0;
+}
+
+.task-list {
+    border: 1px solid var(--ocean-light);
+    border-top: 0;
+    border-radius: 0 0 8px 8px;
+}
+
+.task-item:not(:last-child) {
+    border-bottom: 1px solid #DEE2E6;
+}
+
+.task-item:hover {
+    background-color: #FAFACD;
+    border-radius: 0 0 8px 8px;
+}
+
+.border-start-light-red {
+    border-left: 1px solid #f5c2c7;
+}
+
+.border-end-light-red {
+    border-right: 1px solid #f5c2c7;
+}

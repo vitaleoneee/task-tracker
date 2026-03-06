@@ -29,6 +29,8 @@
             </div>
             <div class="add-task" hx-get="{% url 'tracker:add_task' project.id %}" hx-trigger="load">
             </div>
+            <div class="task-list" hx-get="{% url 'tracker:task_list' project.id %}" hx-trigger="load">
+            </div>
         </div>
     {% endfor %}
 </div>

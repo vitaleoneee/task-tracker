@@ -8,7 +8,10 @@ from tasktracker.apps.tracker.views.projects.project_views import (
     ProjectUpdateView,
     ProjectDetailView,
 )
-from tasktracker.apps.tracker.views.tasks.tasks_views import TaskCreateView
+from tasktracker.apps.tracker.views.tasks.tasks_views import (
+    TaskCreateView,
+    TaskListView,
+)
 
 app_name = "tracker"
 urlpatterns = [
@@ -26,5 +29,6 @@ urlpatterns = [
         "projects/<int:pk>/detail/", ProjectDetailView.as_view(), name="project_detail"
     ),
     # Tasks urls
+    path("projects/<int:pk>/task-list/", TaskListView.as_view(), name="task_list"),
     path("projects/<int:pk>/add-task/", TaskCreateView.as_view(), name="add_task"),
 ]

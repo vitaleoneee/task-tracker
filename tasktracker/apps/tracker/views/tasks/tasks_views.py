@@ -1,7 +1,16 @@
 from django.http import HttpResponse
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 
 from tasktracker.apps.tracker.models import Task, Project
+
+
+class TaskListView(ListView):
+    model = Task
+    template_name = "tracker/partials/tasks/task_list.html"
+    context_object_name = "tasks"
+
+    def get_queryset(self):
+        return Task.objects.filter(project_id=self.kwargs["pk"])
 
 
 class TaskCreateView(CreateView):
