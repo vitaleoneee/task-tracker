@@ -26,7 +26,8 @@
 
         <div class="btn-divider text-secondary">|</div>
 
-        <button type="button" class="btn">
+        <button type="button" class="btn" hx-delete="{% url 'tracker:task_delete' task.id %}"
+                hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
             <i class="bi bi-trash"></i>
         </button>
 

@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.views.generic import CreateView, ListView, UpdateView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 
 from tasktracker.apps.tracker.models import Task, Project
 
@@ -49,3 +49,15 @@ class TaskUpdateView(UpdateView):
             return render(
                 request, "tracker/partials/tasks/task_item.html", {"task": self.object}
             )
+
+
+class TaskDeleteView(DeleteView):
+    model = Task
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.delete()
+        response = HttpResponse()
+        # Return an HTMX response to trigger the task list refresh
+        response["HX-Trigger"] = "refreshData"
+        return response
