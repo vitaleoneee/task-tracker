@@ -1,5 +1,6 @@
 import json
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import (
@@ -13,7 +14,7 @@ from django.views.generic import (
 from tasktracker.apps.tracker.models import Project
 
 
-class ProjectListView(ListView):
+class ProjectListView(LoginRequiredMixin, ListView):
     model = Project
     template_name = "tracker/partials/projects/project_list.html"
     context_object_name = "projects"
@@ -22,13 +23,16 @@ class ProjectListView(ListView):
         return Project.objects.filter(owner=self.request.user)
 
 
-class ProjectDetailView(DetailView):
+class ProjectDetailView(LoginRequiredMixin, DetailView):
     model = Project
     template_name = "tracker/partials/projects/project_item.html"
     context_object_name = "project"
 
+    def get_queryset(self):
+        return Project.objects.filter(owner=self.request.user)
 
-class ProjectCreateView(CreateView):
+
+class ProjectCreateView(LoginRequiredMixin, CreateView):
     model = Project
     template_name = "tracker/partials/projects/project_create.html"
     fields = ["name"]
@@ -42,7 +46,7 @@ class ProjectCreateView(CreateView):
         return response
 
 
-class ProjectDeleteView(DeleteView):
+class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     model = Project
 
     def delete(self, request, *args, **kwargs):
@@ -54,7 +58,7 @@ class ProjectDeleteView(DeleteView):
         return response
 
 
-class ProjectUpdateView(UpdateView):
+class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     model = Project
     template_name = "tracker/partials/projects/project_update.html"
     fields = ["name"]

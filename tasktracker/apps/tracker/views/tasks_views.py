@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.views.generic import (
     CreateView,
@@ -18,7 +18,9 @@ class TaskListView(ListView):
     context_object_name = "tasks"
 
     def get_queryset(self):
-        return Task.objects.filter(project_id=self.kwargs["pk"])
+        return Task.objects.filter(
+            project_id=self.kwargs["pk"], project__owner=self.request.user
+        )
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -49,7 +51,7 @@ class TaskCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["project"] = Project.objects.get(pk=self.kwargs["pk"])
+        context["project"] = get_object_or_404(Project, pk=self.kwargs["pk"])
         return context
 
 
@@ -64,20 +66,19 @@ class TaskUpdateView(UpdateView):
         if "toggle_complete" in request.POST:
             self.object.is_completed = not self.object.is_completed
             self.object.save()
-            return render(
-                request, "tracker/partials/tasks/task_item.html", {"task": self.object}
-            )
-        form = self.get_form()
-        if form.is_valid():
-            form.save()
-            return render(
-                request, "tracker/partials/tasks/task_item.html", {"task": self.object}
-            )
+        else:
+            form = self.get_form()
+            if form.is_valid():
+                form.save()
+            else:
+                return render(
+                    request,
+                    "tracker/partials/tasks/task_update.html",
+                    {"task": self.object, "form": form},
+                )
 
         return render(
-            request,
-            "tracker/partials/tasks/task_update.html",
-            {"task": self.object, "form": form},
+            request, "tracker/partials/tasks/task_item.html", {"task": self.object}
         )
 
 
