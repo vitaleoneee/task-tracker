@@ -1,5 +1,6 @@
 from django.http import HttpResponse
-from django.views.generic import CreateView, ListView
+from django.shortcuts import render
+from django.views.generic import CreateView, ListView, UpdateView
 
 from tasktracker.apps.tracker.models import Task, Project
 
@@ -32,3 +33,19 @@ class TaskCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context["project"] = Project.objects.get(pk=self.kwargs["pk"])
         return context
+
+
+class TaskUpdateView(UpdateView):
+    model = Task
+    template_name = "tracker/partials/tasks/update_task.html"
+    fields = ["title", "due_date", "priority", "is_completed"]
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        if "toggle_complete" in request.POST:
+            self.object.is_completed = not self.object.is_completed
+            self.object.save()
+            return render(
+                request, "tracker/partials/tasks/task_item.html", {"task": self.object}
+            )
