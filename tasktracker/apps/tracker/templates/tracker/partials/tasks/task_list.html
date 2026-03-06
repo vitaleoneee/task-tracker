@@ -1,0 +1,8 @@
+<div hx-get="{% url 'tracker:task_list' project.id %}" hx-target="#test" hx-trigger="load">
+</div>
+
+<div id="test">
+        {% for task in tasks %}
+            <p>{{ task.title }}</p>
+        {% endfor %}
+</div>
