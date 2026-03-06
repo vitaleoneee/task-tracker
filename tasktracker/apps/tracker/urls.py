@@ -13,6 +13,7 @@ from tasktracker.apps.tracker.views.tasks.tasks_views import (
     TaskListView,
     TaskUpdateView,
     TaskDeleteView,
+    TaskDetailView,
 )
 
 app_name = "tracker"
@@ -35,4 +36,5 @@ urlpatterns = [
     path("projects/<int:pk>/add-task/", TaskCreateView.as_view(), name="add_task"),
     path("task/<int:pk>/update/", TaskUpdateView.as_view(), name="task_update"),
     path("task/<int:pk>/delete/", TaskDeleteView.as_view(), name="task_delete"),
+    path("task/<int:pk>/", TaskDetailView.as_view(), name="task_detail"),
 ]
