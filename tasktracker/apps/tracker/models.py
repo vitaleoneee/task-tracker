@@ -8,7 +8,6 @@ class Project(models.Model):
     )
     name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ["-created_at"]
@@ -26,12 +25,10 @@ class Task(models.Model):
 
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="tasks")
     title = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
     is_completed = models.BooleanField(default=False)
     priority = models.IntegerField(choices=Priority.choices, default=Priority.LOW)
     due_date = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ["-created_at"]
