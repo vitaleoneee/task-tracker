@@ -6,13 +6,18 @@
         <div class="mb-4">
             <div class="project-header">
                 <div class="row px-3 py-2 align-items-center justify-content-between">
-                    <div class="col d-flex align-items-center gap-3">
+                    <div class="col-9 d-flex align-items-center gap-3">
                         <i class="bi bi-calendar2 text-dark"></i>
-                        <p class="m-0 text-light fw-bold">{{ project.name }}</p>
+                        <div id="project-name-{{ project.id }}" class="w-100">
+                            <p class="m-0 text-light fw-bold project-name">{{ project.name }}</p>
+                        </div>
                     </div>
 
-                    <div class="col d-flex justify-content-end project-buttons">
-                        <button type="button" class="btn border-end border-dark-subtle">
+                    <div class="col-3 d-flex justify-content-end project-buttons">
+                        <button type="button" class="btn border-end border-dark-subtle"
+                                hx-get="{% url 'tracker:project_update' project.id %}"
+                                hx-target="#project-name-{{ project.id }}"
+                                hx-swap="innerHTML">
                             <i class="bi bi-pencil"></i>
                         </button>
                         <button type="button" class="btn" hx-delete="{% url 'tracker:project_delete' project.id %}"
