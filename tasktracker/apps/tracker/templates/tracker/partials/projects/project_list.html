@@ -15,7 +15,8 @@
                         <button type="button" class="btn border-end border-dark-subtle">
                             <i class="bi bi-pencil"></i>
                         </button>
-                        <button type="button" class="btn">
+                        <button type="button" class="btn" hx-delete="{% url 'tracker:project_delete' project.id %}"
+                                hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
                             <i class="bi bi-trash"></i>
                         </button>
                     </div>
