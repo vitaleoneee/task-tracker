@@ -27,11 +27,11 @@
         {% if task.due_date and not task.is_completed %}
             {% if task.due_date < now %}
                 <span class="task-due overdue">
-            <i class="bi bi-clock me-1"></i>Overdue | {{ task.due_date }}
+            <i class="bi bi-clock me-1"></i>Overdue | {{ task.due_date|date:"d M Y H:i" }}
         </span>
             {% else %}
                 <span class="task-due upcoming">
-            <i class="bi bi-check-circle me-1"></i>Due | {{ task.due_date }}
+            <i class="bi bi-check-circle me-1"></i>Due | {{ task.due_date|date:"d M Y H:i" }}
         </span>
             {% endif %}
         {% endif %}

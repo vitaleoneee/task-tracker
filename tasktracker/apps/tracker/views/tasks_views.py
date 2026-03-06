@@ -34,6 +34,11 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
     template_name = "tracker/partials/tasks/task_item.html"
     context_object_name = "task"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["now"] = timezone.now()
+        return context
+
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
@@ -79,7 +84,9 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
                 )
 
         return render(
-            request, "tracker/partials/tasks/task_item.html", {"task": self.object}
+            request,
+            "tracker/partials/tasks/task_item.html",
+            {"task": self.object, "now": timezone.now()},
         )
 
 
@@ -91,6 +98,5 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
         self.object = self.get_object()
         self.object.delete()
         response = HttpResponse()
-        # Return an HTMX response to trigger the task list refresh
         response["HX-Trigger"] = "refreshData"
         return response
