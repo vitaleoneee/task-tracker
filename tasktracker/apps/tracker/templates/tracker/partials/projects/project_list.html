@@ -1,0 +1,29 @@
+<div id="project-list"
+     hx-get="{% url 'tracker:project_list' %}"
+     hx-trigger="refreshData from:body"
+     hx-swap="innerHTML">
+    {% for project in projects %}
+        <div class="mb-4">
+            <div class="project-header">
+                <div class="row px-3 py-2 align-items-center justify-content-between">
+                    <div class="col d-flex align-items-center gap-3">
+                        <i class="bi bi-calendar2 text-dark"></i>
+                        <p class="m-0 text-light fw-bold">{{ project.name }}</p>
+                    </div>
+
+                    <div class="col d-flex justify-content-end project-buttons">
+                        <button type="button" class="btn border-end border-dark-subtle">
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                        <button type="button" class="btn">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="add-task">
+                {% include "tracker/partials/tasks/create_task.html" with project=project %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

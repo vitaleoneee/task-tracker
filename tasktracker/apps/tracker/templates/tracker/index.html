@@ -23,7 +23,10 @@
             {% endif %}
         </div>
     </nav>
-
+    <div class="container mt-4"
+         hx-get="{% url 'tracker:project_list' %}"
+         hx-trigger="load">
+    </div>
     <!-- Clicking the button opens a modal window -->
     <div x-data="{ open: false }"
          x-init="window.addEventListener('closeModal', () => { open = false })">

@@ -187,3 +187,24 @@ form.custom-form .form-check-label {
     z-index: 1002;
     transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
+
+.project-header {
+    background-color: var(--dark-ocean-color);
+    border-radius: 3px;
+}
+
+
+.project-buttons i {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.project-buttons button {
+    border: 0;
+    border-radius: 0;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.add-task {
+    background-color: #F0F0F0;
+    border: 1px solid var(--ocean-light);
+}
