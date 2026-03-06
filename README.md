@@ -1,6 +1,6 @@
 # TaskTracker — Personal Task & Project Manager
 
-> A lightweight, single-page productivity tool built with Django 5.2, HTMX, and Alpine.js.  
+> Single-page productivity tool built with Django 5.2, HTMX, and Alpine.js.  
 > Manage your projects and tasks without ever reloading the page.
 
 ---
@@ -92,7 +92,7 @@ The app will be available at **http://localhost:8000**
 To stop the containers:
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ---
