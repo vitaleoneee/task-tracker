@@ -23,19 +23,24 @@
             {% endif %}
         </div>
     </nav>
-    <div class="container mt-4"
-         hx-get="{% url 'tracker:project_list' %}"
-         hx-trigger="load">
-    </div>
-    <!-- Clicking the button opens a modal window -->
+
     <div x-data="{ open: false }"
          x-init="window.addEventListener('closeModal', () => { open = false })">
-        <!-- Sending a GET request to ProjectCreateView to retrieve the form -->
-        <button class="add-todo-btn" @click="open = true" hx-get="{% url 'tracker:add_project' %}"
-                hx-target="#createTodoForm" hx-swap="innerHTML">
-            <i class="bi bi-plus-square"></i>
-            Add TODO List
-        </button>
+
+        <div class="container mt-4"
+             hx-get="{% url 'tracker:project_list' %}"
+             hx-trigger="load">
+        </div>
+
+        <div class="container">
+            <button class="add-todo-btn" @click="open = true"
+                    hx-get="{% url 'tracker:project_add' %}"
+                    hx-target="#createTodoForm"
+                    hx-swap="innerHTML">
+                <i class="bi bi-plus-square"></i>
+                Add TODO List
+            </button>
+        </div>
 
         <!-- Blackout -->
         <div class="todo-overlay"
@@ -45,11 +50,9 @@
         </div>
 
         <!-- Add TODO form -->
-        <div class="todo-modal"
-             x-show="open"
-             x-transition>
-            <div id="createTodoForm">
-            </div>
+        <div class="todo-modal" x-show="open">
+            <div id="createTodoForm"></div>
         </div>
+
     </div>
 {% endblock content %}

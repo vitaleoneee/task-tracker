@@ -34,7 +34,7 @@ class TaskDetailView(DetailView):
 
 class TaskCreateView(CreateView):
     model = Task
-    template_name = "tracker/partials/tasks/create_task.html"
+    template_name = "tracker/partials/tasks/task_create.html"
     fields = ["title", "due_date", "priority"]
 
     def form_valid(self, form):
@@ -55,7 +55,7 @@ class TaskCreateView(CreateView):
 
 class TaskUpdateView(UpdateView):
     model = Task
-    template_name = "tracker/partials/tasks/update_task.html"
+    template_name = "tracker/partials/tasks/task_update.html"
     fields = ["title", "due_date", "priority"]
 
     def post(self, request, *args, **kwargs):
@@ -76,7 +76,7 @@ class TaskUpdateView(UpdateView):
 
         return render(
             request,
-            "tracker/partials/tasks/update_task.html",
+            "tracker/partials/tasks/task_update.html",
             {"task": self.object, "form": form},
         )
 

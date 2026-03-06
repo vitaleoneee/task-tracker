@@ -30,7 +30,7 @@ class ProjectDetailView(DetailView):
 
 class ProjectCreateView(CreateView):
     model = Project
-    template_name = "tracker/partials/projects/create_project.html"
+    template_name = "tracker/partials/projects/project_create.html"
     fields = ["name"]
 
     def form_valid(self, form):
@@ -56,7 +56,7 @@ class ProjectDeleteView(DeleteView):
 
 class ProjectUpdateView(UpdateView):
     model = Project
-    template_name = "tracker/partials/projects/update_project.html"
+    template_name = "tracker/partials/projects/project_update.html"
     fields = ["name"]
 
     def form_valid(self, form):

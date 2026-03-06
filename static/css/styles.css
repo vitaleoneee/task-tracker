@@ -37,6 +37,7 @@ form.custom-form .form-label {
 }
 
 form.custom-form .form-control {
+    color: #FFFFFF;
     background-color: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
@@ -93,6 +94,12 @@ form.custom-form .form-check-label {
     cursor: pointer;
 }
 
+form a {
+    text-decoration: none;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+}
+
 .custom-navbar {
     background-color: var(--dark-ocean-color);
     padding: 12px 0;
@@ -114,7 +121,7 @@ form.custom-form .form-check-label {
     color: #FFFFFF;
     font-weight: 600;
     font-size: 16px;
-    border-right: rgba(255, 255, 255, 0.5) solid 2px;
+    border-right: rgba(255, 255, 255, 0.5) solid 1px;
     padding-right: 16px;
 }
 
@@ -153,18 +160,15 @@ form.custom-form .form-check-label {
     font-weight: 600;
     font-size: 17px;
     background-color: var(--dark-ocean-color);
-    position: fixed;
-    left: 50%;
-    bottom: 30px;
-    transform: translateX(-50%);
-    transition: box-shadow 0.2s ease, transform 0.5s ease;
-    z-index: 1000;
+    display: block;
+    margin: 24px auto;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .add-todo-btn:hover {
     background-color: var(--ocean-light);
     border-color: var(--ocean-light);
-    transform: translateY(-5px) translateX(-50%);
+    transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -185,7 +189,6 @@ form.custom-form .form-check-label {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1002;
-    transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .project-header {

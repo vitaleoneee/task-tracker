@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
-{% block title %}Log In{% endblock %}
+{% block title %}Register{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -9,12 +9,18 @@
             <form method="post" class="custom-form">
                 {% csrf_token %}
                 <legend class="mb-4 text-center fs-1 fw-bold custom-form-title">
-                    Log in
+                    Register
                 </legend>
                 {{ form|crispy }}
                 <button type="submit" class="btn btn-light w-100 mt-2 custom-form-btn">
-                    Log in to your account
+                    Create Account
                 </button>
+                <p class="text-center mt-3 mb-0">
+                    Already have an account?
+                    <a href="{% url 'account_login' %}" class="fw-semibold">
+                        Sign in
+                    </a>
+                </p>
             </form>
         </div>
     </div>

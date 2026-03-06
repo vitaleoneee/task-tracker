@@ -1,6 +1,6 @@
 {% load crispy_forms_tags %}
 
-<form class="custom-form" hx-post="{% url 'tracker:add_project' %}">
+<form class="custom-form" hx-post="{% url 'tracker:project_add' %}">
     {% csrf_token %}
     <legend class="mb-3 text-center fs-1 fw-bold custom-form-title">
         New Todo List

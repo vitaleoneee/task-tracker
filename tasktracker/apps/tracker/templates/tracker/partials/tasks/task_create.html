@@ -1,4 +1,4 @@
-<form hx-post="{% url 'tracker:add_task' project.id %}">
+<form hx-post="{% url 'tracker:task_add' project.id %}">
     {% csrf_token %}
     <div class="row g-2 align-items-center px-3 py-2">
         <div class="col-auto d-none d-md-block">
